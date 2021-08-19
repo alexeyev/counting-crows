@@ -11,4 +11,4 @@ def shoot(prefix: str):
     sleep(3)
     camera.capture(prefix + ".jpg")
     camera.stop_preview()
-    return open('out.jpg', 'rb')
+    return open(prefix + ".jpg", "rb")
