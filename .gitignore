@@ -1,0 +1,5 @@
+configs/bot_config.ini
+*.pyc
+*.py~
+*.jpg
+*.png

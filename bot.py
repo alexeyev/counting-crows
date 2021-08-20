@@ -23,13 +23,14 @@ content_types = "audio, sticker, video, video_note, location, contact, new_chat_
                 "pinned_message, document, photo".split(", ")
 
 
-@bot.message_handler(commands=['start', 'help'])
+@bot.message_handler(commands=["start", "help"])
 def send_welcome(message):
     logger.debug(message)
-    bot.reply_to(message, "Привет, это бот, который учится считать ворон. Используйте команду /bang.")
+    bot.reply_to(message, "Привет, это бот, который учится считать ворон. Ещё в процессе разработки. "
+                          "Используйте команду /bang.")
 
 
-@bot.message_handler(commands=['bang'])
+@bot.message_handler(commands=["bang"])
 def process_bang(message):
     logger.debug(message)
     username = message.from_user.username
@@ -39,7 +40,7 @@ def process_bang(message):
     bot.send_photo(message.chat.id, image, caption="Сколько ворон на фотке?")
 
 
-@bot.message_handler(content_types=['voice'])
+@bot.message_handler(content_types=["voice"])
 def handle_voice(message):
     logger.debug(message)
     bot.reply_to(message, "Не очень удобно сейчас слушать голосовые, давайте лучше командами.")
@@ -51,7 +52,7 @@ def handle_other(message):
     bot.reply_to(message, "Спасибо, залогировал (пока сохранение чисел и валидация не работают).")
 
 
-@bot.message_handler(content_types=["text"] + content_types)
+@bot.message_handler(content_types=content_types)
 def handle_other(message):
     logger.debug(message)
     bot.reply_to(message, "Увы, бот воспринимает только команды, начинающиеся на \"/\".")
