@@ -8,7 +8,7 @@ camera = PiCamera()
 
 def shoot(prefix: str):
     camera.start_preview()
-    sleep(3)
+    sleep(5)
     camera.capture(prefix + ".jpg")
     camera.stop_preview()
     return open(prefix + ".jpg", "rb")

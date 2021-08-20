@@ -30,15 +30,13 @@ def send_welcome(message):
 
 
 @bot.message_handler(commands=['bang'])
-def send_welcome(message):
+def process_bang(message):
     logger.debug(message)
     username = message.from_user.username
     date = message.date
     prefix = "data/%d_%d_%s" % (date, message.message_id, username)
     image = camera.shoot(prefix)
-    bot.send_photo(message.chat.id, image)
-
-
+    bot.send_photo(message.chat.id, image, caption="Сколько ворон на фотке?")
 
 
 @bot.message_handler(content_types=['voice'])
@@ -47,8 +45,14 @@ def handle_voice(message):
     bot.reply_to(message, "Не очень удобно сейчас слушать голосовые, давайте лучше командами.")
 
 
+@bot.message_handler(content_types=["text"])
+def handle_other(message):
+    logger.debug(message)
+    bot.reply_to(message, "Спасибо, залогировал (пока сохранение чисел и валидация не работают).")
+
+
 @bot.message_handler(content_types=["text"] + content_types)
-def handle_text(message):
+def handle_other(message):
     logger.debug(message)
     bot.reply_to(message, "Увы, бот воспринимает только команды, начинающиеся на \"/\".")
 
