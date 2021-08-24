@@ -19,7 +19,7 @@ if __name__ == "__main__":
     import datetime
 
     date_part = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    prefix = "data/pot_%d" % date_part
+    prefix = "data/pot_%s" % date_part
 
     try:
         image = shoot(prefix, timeout_for_focus_seconds=7)
