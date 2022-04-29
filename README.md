@@ -1,7 +1,7 @@
 ## Counting Crows
 
 In Russian, *to count crows* means *to laze around* 
-or *to be unattantive*. This is a procrastination-driven 
+or *to be unattentive*. This is a procrastination-driven 
 project, hence the name.
 
 A Raspberry Pi-based Telegram bot taking photos 
